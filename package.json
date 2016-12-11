@@ -1,0 +1,41 @@
+{
+    "name": "devuan",
+    "version": "0.0.1",
+    "description": "Devuan related support tools",
+    "keywords": [
+        "apt",
+        "coffeescript",
+        "debian",
+        "devuan",
+        "javascript",
+        "list",
+        "mint",
+        "package",
+        "script",
+        "sources",
+        "tool",
+        "ubuntu"
+    ],
+    "homepage": "https://github.com/blinkdog/devuan",
+    "bugs": "https://github.com/blinkdog/devuan/issues",
+    "license": "AGPL-3.0",
+    "author": "Patrick Meade <veloxi@ticon.net>",
+    "files": [
+        "LICENSE",
+        "README.md",
+        "index.js",
+        "lib",
+        "package.json"
+    ],
+    "main": "index",
+    "repository": {
+        "type": "git",
+        "url": "https://github.com/blinkdog/devuan.git"
+    },
+    "devDependencies": {
+        "coffee-script": "1.12.1",
+        "istanbul": "0.4.5",
+        "mocha": "3.2.0",
+        "should": "11.1.2"
+    }
+}

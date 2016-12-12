@@ -18,8 +18,36 @@ You can then use the `DEVUAN` object to query and/or modify your Devuan
 system.
 
 ## API Documentation
-TODO: Add some documentation here about the cool things you can do
-with the `devuan` module.
+
+### APT
+`APT` contains functions for dealing with packages.
+
+### APT.getSourcesListPromise
+`getSourcesListPromise` returns a Promise that will resolve to source
+objects, in the following form:
+
+    {
+      type: "deb",
+      uri: "http://ftp.debian.org/debian",
+      suite: "wheezy",
+      sections: ["main"],
+      options: {
+        arch: ["amd64", "armel"]
+      }
+    }
+
+If you provide a directory to `getSourcesListPromise` it will parse the
+`.list` files that it finds in that directory. If you do not provide a
+directory, then the default system directory `/etc/apt/sources.list.d`
+will be used.
+
+### ARCH
+`ARCH` contains the Devuan architecture provided by `dpkg`. It is the
+output of the following command:
+
+    dpkg --print-architecture
+
+On my system, this is `amd64`, but it may be different on your system.
 
 ## Hacking
 If you want to make changes to the `devuan` module, you need to set up

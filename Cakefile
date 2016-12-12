@@ -34,10 +34,10 @@ task "clean", "Remove build cruft", ->
   clean()
 
 task "coverage", "Perform test coverage analysis", ->
-  clean -> compile -> test -> coverage()
+  clean -> lint -> compile -> test -> coverage()
 
 task "rebuild", "Rebuild the module", ->
-  clean -> compile -> test()
+  clean -> lint -> compile -> test()
 
 #----------------------------------------------------------------------------
 
@@ -59,6 +59,11 @@ coverage = (callback) ->
     exec "#{BROWSER_COMMAND} coverage/lcov-report/index.html", (err, stdout, stderr) ->
       throw err if err
       callback?()
+
+lint = (callback) ->
+  exec "node_modules/.bin/coffeelint src/main", (err, stdout, stderr) ->
+    return console.log stdout if err
+    callback?()
 
 test = (callback) ->
   exec "node_modules/.bin/mocha --colors --recursive", (err, stdout, stderr) ->
